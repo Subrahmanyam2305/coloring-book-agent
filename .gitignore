@@ -8,6 +8,10 @@ __pycache__/
 .env
 .DS_Store
 generated/
+# Exclude generated assets except for README examples
+!assets/
+!assets/images/
+!assets/images/*.png
 
 # Distribution / packaging
 .Python
