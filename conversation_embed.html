@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaColor - Interactive Language Learning</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        #left-pane {
+            flex: 3;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0e0e0;
+        }
+        
+        #right-pane {
+            flex: 1;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            padding: 15px;
+            background-color: #4257b2;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header small {
+            margin-left: 10px;
+            font-weight: normal;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        iframe {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            margin-right: 10px;
+        }
+        
+        #status-message {
+            padding: 15px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        #utterances-content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="left-pane">
+            <div class="header">
+                LinguaColor
+                <small>AI-Powered Language Learning Platform</small>
+            </div>
+            <iframe id="conversation-frame" src="CONVERSATION_URL_PLACEHOLDER" title="Video Call" allow="camera; microphone; fullscreen; display-capture; autoplay" referrerpolicy="no-referrer"></iframe>
+        </div>
+        <div id="right-pane">
+            <div class="header">
+                <div class="status-indicator"></div>
+                Live Conversation
+                <small>AI Assistant</small>
+            </div>
+            <div id="status-message">Connecting to conversation...</div>
+            <div id="utterances-content">
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Allow camera and microphone permissions when prompted</li>
+                    <li>Speak clearly in short sentences</li>
+                    <li>Try asking about the story characters</li>
+                    <li>Practice vocabulary from the story</li>
+                    <li>Ask how to say simple phrases in the target language</li>
+                </ul>
+                <p>When finished, you can close this window and return to the main app.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Update status when iframe loads
+        document.getElementById('conversation-frame').onload = function() {
+            document.getElementById('status-message').textContent = 'Connected! You can now start your conversation.';
+        };
+        
+        // Handle connection errors
+        document.getElementById('conversation-frame').onerror = function() {
+            document.getElementById('status-message').textContent = 'Connection failed. Please try refreshing the page.';
+            document.querySelector('.status-indicator').style.backgroundColor = '#f44336';
+        };
+    </script>
+</body>
+</html>
